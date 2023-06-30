@@ -1,0 +1,14 @@
+*
+!/.gitignore
+!/app
+!/app/*/
+!/app/code/**
+!/app/design/**
+!/app/etc/config.php
+!/app/etc/env.php.sample
+!/app/i18n/**
+!/auth.json
+!/composer.json
+!/composer.lock
+!/m2-hotfixes
+!/m2-hotfixes/**

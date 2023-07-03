@@ -1,0 +1,22 @@
+<?php
+$collection = $block->getEmployeesCollection();
+?>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Full Name</td>
+        <td>Address</td>
+        <td>Telephone</td>
+        <td>Department</td>
+    </tr>
+    <?php foreach ($collection as $employee): ?>
+        <tr>
+            <td><?= $employee->getId() ?></td>
+            <td><?= $employee->getFullName() ?></td>
+            <td><?= $employee->getAddress() ?></td>
+            <td><?= $employee->getTelephone() ?></td>
+            <td><?= $employee->getDepartmentId() ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>

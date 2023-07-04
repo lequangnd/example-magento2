@@ -7,10 +7,10 @@ $collection = $block->getDepartmentCollection();
         <td>Id</td>
         <td>Name</td>
     </tr>
-    <?php foreach($collection as $department):?>
+    <?php foreach ($collection as $department): ?>
         <tr>
-            <td><?= $department->getId()?></td>
-            <td><?= $department->getName()?></td>
+            <td><?= $department->getId() ?></td>
+            <td><?= $department->getName() ?></td>
         </tr>
-   <?php endforeach;?>
+    <?php endforeach; ?>
 </table>

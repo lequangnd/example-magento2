@@ -2,7 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Dtn\Office\Block\Department\DepartmentList" name="require-cookie" template="Dtn_Office::department/list.phtml">
+            <block class="Dtn\Office\Block\Department\DepartmentList" name="departments.list" template="Dtn_Office::department/list.phtml">
             </block>
         </referenceContainer>
     </body>

@@ -1,5 +1,7 @@
 <?php
+
 namespace Dtn\Office\Block\Department;
+
 use Dtn\Office\Model\ResourceModel\Department\CollectionFactory;
 use Magento\Framework\View\Element\Template;
 
@@ -15,6 +17,10 @@ class DepartmentList extends Template
         parent::__construct($context, $data);
     }
 
+    /**
+     *
+     * @return \Dtn\Office\Model\ResourceModel\Department\Collection
+     */
     public function getDepartmentCollection()
     {
         return $this->departmentCollectionFactory->create();

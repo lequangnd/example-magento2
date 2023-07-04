@@ -1,0 +1,19 @@
+<form action="/dtn/employee/createPost" method="POST">
+    <label for="full_name">Full Name:</label>
+    <input type="text" name="full_name" id="full_name" required>
+
+    <label for="address">Address:</label>
+    <input type="text" name="address" id="address" required>
+
+    <label for="telephone">Telephone:</label>
+    <input type="text" name="telephone" id="telephone" required>
+
+    <label for="department">Department:</label>
+    <select name="department" id="department" required>
+        <? foreach ($block->getDepartmentName() as $department): ?>
+            <option value="<?= $department->getId() ?>"><?= $department->getName() ?></option>
+        <? endforeach; ?>
+    </select>
+
+    <input type="submit" value="Insert Employee">
+</form>

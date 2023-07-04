@@ -27,6 +27,7 @@ class EmployeesList extends Template
         return $this->employeeCollectionFactory->create();
     }
 
+
     public function getDepartmentName($departmentId)
     {
         $departmentName = $this->departmentFactory->create();

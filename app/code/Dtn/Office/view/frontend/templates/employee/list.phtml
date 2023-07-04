@@ -16,7 +16,7 @@ $collection = $block->getEmployeesCollection();
             <td><?= $employee->getFullName() ?></td>
             <td><?= $employee->getAddress() ?></td>
             <td><?= $employee->getTelephone() ?></td>
-            <td><?= $employee->getDepartmentId() ?></td>
+            <td><?= $block->getDepartmentName($employee->getDepartmentId()) ?></td>
         </tr>
     <?php endforeach; ?>
 </table>

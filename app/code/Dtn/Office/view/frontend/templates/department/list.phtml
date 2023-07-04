@@ -1,0 +1,16 @@
+<?php
+$collection = $block->getDepartmentCollection();
+?>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+    </tr>
+    <?php foreach($collection as $department):?>
+        <tr>
+            <td><?= $department->getId()?></td>
+            <td><?= $department->getName()?></td>
+        </tr>
+   <?php endforeach;?>
+</table>

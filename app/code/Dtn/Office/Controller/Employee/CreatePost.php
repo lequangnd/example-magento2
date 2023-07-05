@@ -28,7 +28,8 @@ class CreatePost extends Action implements HttpPostActionInterface
             $full_name = $postData['full_name'];
             $address = $postData['address'];
             $telephone = $postData['telephone'];
-            $department = $postData['department'];
+            $department_id = $postData['department_id'];
+            $dob = $postData['dob'];
 
             // Thực hiện insert dữ liệu vào cơ sở dữ liệu
             $employee = $this->employeeFactory->create();
@@ -36,12 +37,12 @@ class CreatePost extends Action implements HttpPostActionInterface
                 'full_name' => $full_name,
                 'address' => $address,
                 'telephone' => $telephone,
-                'department' => $department
+                'department_id' => $department_id,
+                'dob' => $dob
             ]);
             $employee->save();
 
-            echo "Employee inserted successfully.";
-            return $this->resultFactory()->create();
+            echo "<script type='text/javascript'>alert('Post Employee successful');</script>";
         }
     }
 

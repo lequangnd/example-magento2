@@ -10,7 +10,7 @@ class AddTestEmployees implements DataPatchInterface
 {
     public function __construct(
         protected EmployeeFactory $employeeFactory,
-        protected CollectFactory $departmentCollectionFactory,
+        protected CollectionFactory $departmentCollectionFactory,
     )
     {
     }
@@ -22,9 +22,10 @@ class AddTestEmployees implements DataPatchInterface
     {
         $faker = \Faker\Factory::create();
 
+        $departmentIds = $this->departmentCollectionFactory->create()->getAllIds();
+
         // add 50 employees
         for ($i = 1; $i <= 50; $i++) {
-            $departmentIds = $this->departmentCollectionFactory->create()->getAllIds();
             $departmentId = $departmentIds[array_rand($departmentIds)];
             $employee = $this->employeeFactory->create();
             $employee->setFullName($faker->name())

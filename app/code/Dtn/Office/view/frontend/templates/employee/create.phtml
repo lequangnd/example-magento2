@@ -9,11 +9,14 @@
     <input type="text" name="telephone" id="telephone" required>
 
     <label for="department">Department:</label>
-    <select name="department" id="department" required>
+    <select name="department_id" id="department_id" required>
         <? foreach ($block->getDepartmentName() as $department): ?>
             <option value="<?= $department->getId() ?>"><?= $department->getName() ?></option>
         <? endforeach; ?>
     </select>
+
+    <label for="telephone">Day of Birth:</label>
+    <input type="date" name="dob" id="dob" required>
 
     <input type="submit" value="Insert Employee">
 </form>

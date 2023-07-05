@@ -1,7 +1,8 @@
 <?php
 $collection = $block->getEmployeesCollection();
 ?>
-
+<a href="/dtn/employee/create" class="btn btn-primary">Add Employee</a>
+<hr>
 <table>
     <tr>
         <td>Id</td>
@@ -9,6 +10,7 @@ $collection = $block->getEmployeesCollection();
         <td>Address</td>
         <td>Telephone</td>
         <td>Department</td>
+        <td>Action</td>
     </tr>
     <?php foreach ($collection as $employee): ?>
         <tr>
@@ -17,6 +19,9 @@ $collection = $block->getEmployeesCollection();
             <td><?= $employee->getAddress() ?></td>
             <td><?= $employee->getTelephone() ?></td>
             <td><?= $block->getDepartmentName($employee->getDepartmentId()) ?></td>
+            <td><a href="/dtn/employee/update?id=<?=$employee->getId()?>">Update</a> </td>
+            <td><a href="/dtn/employee/delete?id=<?=$employee->getId()?>">Delete</a> </td>
         </tr>
     <?php endforeach; ?>
 </table>
+<?= $block->getPagerHtml() ?>

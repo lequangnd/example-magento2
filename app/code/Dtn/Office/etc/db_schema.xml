@@ -17,7 +17,7 @@
         <column xsi:type="varchar" name="telephone" nullable="false" length="32" comment="Telephone"/>
         <column xsi:type="smallint" name="department_id" unsigned="false" nullable="false" identity="false"
                 comment="Department ID"/>
-        <column xsi:type="datetime" name="dob" nullable="false" comment="Day Of Birth"/>
+        <column xsi:type="date" name="dob" nullable="false" comment="Day Of Birth"/>
 
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="employee_id"/>

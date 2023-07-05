@@ -5,6 +5,7 @@ namespace Dtn\Office\Block\Employee;
 use Dtn\Office\Model\ResourceModel\Employee\CollectionFactory;
 use Dtn\Office\Model\DepartmentFactory;
 use Magento\Framework\View\Element\Template;
+use Magento\Theme\Block\Html\Pager;
 
 class EmployeesList extends Template
 {
@@ -24,7 +25,14 @@ class EmployeesList extends Template
      */
     public function getEmployeesCollection()
     {
-        return $this->employeeCollectionFactory->create();
+        $pageSize = 10; // Số lượng bản ghi trên mỗi trang
+        $currentPage = (int)$this->getRequest()->getParam('p'); // Lấy trang hiện tại từ URL
+
+        $collection = $this->employeeCollectionFactory->create();
+        $collection->setPageSize($pageSize);
+        $collection->setCurPage($currentPage);
+
+        return $collection;
     }
 
 
@@ -33,6 +41,18 @@ class EmployeesList extends Template
         $departmentName = $this->departmentFactory->create();
         $departmentName->load($departmentId);
         return $departmentName->getName();
+    }
+
+    public function getPagerHtml()
+    {
+        $pager = $this->getLayout()->createBlock(
+            Pager::class,
+            'employee.list.pager'
+        )->setCollection(
+            $this->getEmployeesCollection()
+        );
+
+        return $pager->toHtml();
     }
 
 }

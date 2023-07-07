@@ -114,7 +114,7 @@ class Test extends Action implements HttpGetActionInterface, HttpPostActionInter
 //        $employee->setDob('2000/01/02');
 //        $employee->save();
 
-        $employee=$this->employeeFactory->create();
+        $employee = $this->employeeFactory->create();
         $employee->setFullName('Nguyen Thi A');
         $employee->setAddress('Ninh Binh');
         $employee->setTelephone('0976182986');
@@ -122,7 +122,7 @@ class Test extends Action implements HttpGetActionInterface, HttpPostActionInter
         $employee->setDob('2000/01/03');
         $employee->save();
 
-        $employee=$this->employeeFactory->create();
+        $employee = $this->employeeFactory->create();
         $employee->setFullName('Nguyen Thi B');
         $employee->setAddress('Ha Noi');
         $employee->setTelephone('0999898989');
@@ -130,7 +130,7 @@ class Test extends Action implements HttpGetActionInterface, HttpPostActionInter
         $employee->setDob('2000/01/04');
         $employee->save();
 
-        $employee=$this->employeeFactory->create();
+        $employee = $this->employeeFactory->create();
         $employee->setFullName('Nguyen Thi C');
         $employee->setAddress('Ha Noi');
         $employee->setTelephone('0999898989');
@@ -138,7 +138,7 @@ class Test extends Action implements HttpGetActionInterface, HttpPostActionInter
         $employee->setDob('2000/01/05');
         $employee->save();
 
-        $employee=$this->employeeFactory->create();
+        $employee = $this->employeeFactory->create();
         $employee->setFullName('Le Van A');
         $employee->setAddress('Nam Dinh');
         $employee->setTelephone('0988889899');
@@ -146,7 +146,7 @@ class Test extends Action implements HttpGetActionInterface, HttpPostActionInter
         $employee->setDob('2001/01/16');
         $employee->save();
 
-        $employee=$this->employeeFactory->create();
+        $employee = $this->employeeFactory->create();
         $employee->setFullName('Nguyen Van a');
         $employee->setAddress('Ha Noi');
         $employee->setTelephone('0999898989');
@@ -154,7 +154,7 @@ class Test extends Action implements HttpGetActionInterface, HttpPostActionInter
         $employee->setDob('2000/12/09');
         $employee->save();
 
-        $employee=$this->employeeFactory->create();
+        $employee = $this->employeeFactory->create();
         $employee->setFullName('Nguyen Van B');
         $employee->setAddress('Ha Nam');
         $employee->setTelephone('0999898989');
@@ -162,7 +162,7 @@ class Test extends Action implements HttpGetActionInterface, HttpPostActionInter
         $employee->setDob('1999/01/01');
         $employee->save();
 
-        $employee=$this->employeeFactory->create();
+        $employee = $this->employeeFactory->create();
         $employee->setFullName('Nguyen Van C');
         $employee->setAddress('Ha Noi');
         $employee->setTelephone('0999898989');
@@ -170,7 +170,7 @@ class Test extends Action implements HttpGetActionInterface, HttpPostActionInter
         $employee->setDob('2001/01/01');
         $employee->save();
 
-        $employee=$this->employeeFactory->create();
+        $employee = $this->employeeFactory->create();
         $employee->setFullName('Nguyen a');
         $employee->setAddress('Ha Noi');
         $employee->setTelephone('0999898989');

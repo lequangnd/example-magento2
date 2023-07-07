@@ -11,7 +11,7 @@ class Update extends Action implements HttpGetActionInterface
 {
     public function __construct(
         protected Context $context,
-        protected PageFactory $resultPageFactory
+        protected PageFactory $resultPageFactory,
     )
     {
         parent::__construct($context);

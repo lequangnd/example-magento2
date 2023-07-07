@@ -41,7 +41,7 @@ class CreatePost extends Action implements HttpPostActionInterface
             $employee->setDob($dob);
             $employee->save();
 
-
+            $this->messageManager->addSuccessMessage(__('Add Employee Successful'));
             $redirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
             $redirect->setUrl('/dtn/employee/');
 

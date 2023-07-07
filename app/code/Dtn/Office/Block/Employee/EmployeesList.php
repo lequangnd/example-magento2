@@ -28,13 +28,12 @@ class EmployeesList extends Template
         $pageSize = 10; // Số lượng bản ghi trên mỗi trang
         $currentPage = (int)$this->getRequest()->getParam('p'); // Lấy trang hiện tại từ URL
 
-        $collection = $this->employeeCollectionFactory->create();
-        $collection->setPageSize($pageSize);
-        $collection->setCurPage($currentPage);
+        $employeeCollection = $this->employeeCollectionFactory->create();
+        $employeeCollection->setPageSize($pageSize);
+        $employeeCollection->setCurPage($currentPage);
 
-        return $collection;
+        return $employeeCollection;
     }
-
 
     public function getDepartmentName($departmentId)
     {

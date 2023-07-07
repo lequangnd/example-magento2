@@ -1,4 +1,5 @@
 <?php
+
 namespace Dtn\Office\Model;
 
 use Magento\Framework\Model\AbstractModel;

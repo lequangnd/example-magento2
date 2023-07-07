@@ -10,7 +10,7 @@
 
     <label for="department">Department:</label>
     <select name="department_id" id="department_id" required>
-        <? foreach ($block->getDepartmentName() as $department): ?>
+        <? foreach ($block->getDepartmentCollection() as $department): ?>
             <option value="<?= $department->getId() ?>"><?= $department->getName() ?></option>
         <? endforeach; ?>
     </select>

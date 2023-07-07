@@ -18,19 +18,26 @@ class Update extends Template
         parent::__construct($context, $data);
     }
 
-
     public function getEmployee()
     {
-        $employeeId=$this->getRequest()->getParam('id');
-        $employee=$this->employeeFactory->create();
+        $employeeId = $this->getRequest()->getParam('id');
+        $employee = $this->employeeFactory->create();
         $employee->load($employeeId);
-        return $employee;
-
+        if ($employee) {
+            return $employee;
+        } else {
+            return null;
+        }
     }
 
-    public function getDepartmentName()
+    public function getDepartmentCollection()
     {
         return $this->departmentCollectionFactory->create();
+    }
+
+    public function getErrorMessage()
+    {
+        echo 'Employee does not exit';
     }
 
 }

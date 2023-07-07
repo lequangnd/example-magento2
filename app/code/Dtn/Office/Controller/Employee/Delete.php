@@ -26,8 +26,8 @@ class Delete extends Action implements HttpGetActionInterface
             $employee = $this->employeeFactory->create();
             $employee->load($employeeId);
             $employee->delete();
-            
 
+            $this->messageManager->addSuccessMessage(__('Delete Employee Successful'));
             $redirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
             $redirect->setUrl('/dtn/employee/');
 

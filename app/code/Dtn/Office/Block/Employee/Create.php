@@ -16,8 +16,7 @@ class Create extends Template
         parent::__construct($context, $data);
     }
 
-
-    public function getDepartmentName()
+    public function getDepartmentCollection()
     {
         return $this->departmentCollectionFactory->create();
     }

@@ -35,9 +35,9 @@ class Update extends Template
         return $this->departmentCollectionFactory->create();
     }
 
-    public function getErrorMessage()
+    public function getErrorMessage($errorMessage)
     {
-        echo 'Employee does not exit';
+        return $errorMessage;
     }
 
 }

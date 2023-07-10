@@ -23,7 +23,7 @@ class Update extends Template
         $employeeId = $this->getRequest()->getParam('id');
         $employee = $this->employeeFactory->create();
         $employee->load($employeeId);
-        if ($employee) {
+        if ($employee->getId()) {
             return $employee;
         } else {
             return null;

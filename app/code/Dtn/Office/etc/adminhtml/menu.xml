@@ -1,7 +1,19 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Dtn_Office::dtn_menu" title="DTN" module="Dtn_Office" sortOrder="10"  resource="Magento_Backend::content" />
-        <add id="Dtn_Office::departments_sub_menu" title="Departments" module="Dtn_Office" sortOrder="10" parent="Dtn_Office::dtn_menu"  action="dtn/department/index" resource="Dtn_Office::departments_sub_menu" />
-        <add id="Dtn_Office::employe_sub_menu" title="employees" module="Dtn_Office" sortOrder="10" parent="Dtn_Office::dtn_menu"  action="dtn/employees/index" resource="Dtn_Office::employees_sub_menu" />
+        <add id="Dtn_Office::dtn_menu"
+             title="DTN" translate="title" module="Dtn_Office"
+             sortOrder="10"
+             resource="Dtn_Office::dtn_menu"
+        />
+
+        <add id="Dtn_Office::dtn_menu_employee"
+             title="Employees" translate="title" module="Dtn_Office"
+             sortOrder="20" parent="Dtn_Office::dtn_menu"
+             action="dtn/employee/index"
+             resource="Dtn_Office::dtn_menu_employee"
+        />
+
     </menu>
 </config>

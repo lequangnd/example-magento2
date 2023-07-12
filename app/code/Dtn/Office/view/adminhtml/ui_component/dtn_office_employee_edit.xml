@@ -46,6 +46,12 @@
                 <item name="sortOrder" xsi:type="number">20</item>
             </item>
         </argument>
+        <field name="employee_id" formElement="hidden">
+            <settings>
+                <dataType>text</dataType>
+                <dataScope>employee_id</dataScope>
+            </settings>
+        </field>
         <field name="full_name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

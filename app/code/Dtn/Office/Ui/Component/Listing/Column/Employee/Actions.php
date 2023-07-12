@@ -25,6 +25,18 @@ class Actions extends Column
                     'label' => __('Edit'),
                     'hidden' => false,
                 ];
+
+                $item[$this->getData('name')]['delete'] = [
+                    'href' => $this->getContext()->getUrl(
+                        'dtn/employee/delete',
+                        ['id' => $itemId]
+                    ),
+                    'label' => __('Delete'),
+                    'confirm' => [
+                        'title' => __('Delete Employee'),
+                        'message' => __('Are you sure you want to delete this employee?')
+                    ]
+                ];
             }
         }
 

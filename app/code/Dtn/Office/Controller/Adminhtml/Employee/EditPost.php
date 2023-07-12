@@ -9,7 +9,7 @@ use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\View\Result\PageFactory;
 
 
-class CreatePost extends Action implements HttpPostActionInterface
+class EditPost extends Action implements HttpPostActionInterface
 {
     public function __construct(
         protected Context $context,
@@ -26,6 +26,7 @@ class CreatePost extends Action implements HttpPostActionInterface
             $postData = $this->getRequest()->getPostValue();
 
             // Lấy dữ liệu từ form
+            $employeeId = $postData['employee_id'];
             $full_name = $postData['full_name'];
             $address = $postData['address'];
             $telephone = $postData['telephone'];
@@ -34,6 +35,7 @@ class CreatePost extends Action implements HttpPostActionInterface
 
             // Thực hiện insert dữ liệu vào cơ sở dữ liệu
             $employee = $this->employeeFactory->create();
+            $employee->load($employeeId);
             $employee->setFullName($full_name);
             $employee->setAddress($address);
             $employee->setTelephone($telephone);
@@ -41,7 +43,7 @@ class CreatePost extends Action implements HttpPostActionInterface
             $employee->setDob($dob);
             $employee->save();
 
-            $this->messageManager->addSuccessMessage(__('Add Employee Successful'));
+            $this->messageManager->addSuccessMessage(__('Edit Employee Successful'));
             $redirect = $this->resultRedirectFactory->create();
             $redirect->setPath('*/*/');
 

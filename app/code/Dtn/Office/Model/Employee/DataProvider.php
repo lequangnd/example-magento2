@@ -2,34 +2,38 @@
 
 namespace Dtn\Office\Model\Employee;
 
-use Dtn\Office\Model\ResourceModel\Employee\CollectionFactory;
+use Magento\Framework\Data\OptionSourceInterface;
 use Magento\Ui\DataProvider\AbstractDataProvider;
-use Magento\Framework\App\RequestInterface;
+use Dtn\Office\Model\ResourceModel\Employee\CollectionFactory;
 
 class DataProvider extends AbstractDataProvider
 {
 
-    protected $employeeCollectionFactory;
-    protected $request;
+    protected $loadedData;
 
     public function __construct(
         $name,
         $primaryFieldName,
         $requestFieldName,
         CollectionFactory $employeeCollectionFactory,
-        RequestInterface $request,
         array $meta = [],
         array $data = []
     )
     {
         $this->collection = $employeeCollectionFactory->create();
-        $this->employeeCollectionFactory = $employeeCollectionFactory;
-        $this->request = $request;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
     public function getData()
     {
-        return [];
+
+        if (isset($this->loadedData)) {
+            return $this->loadedData;
+        }
+        $items = $this->collection->getItems();
+        foreach ($items as $employee) {
+            $this->loadedData[$employee->getEmployeeId()] = $employee->getData();
+        }
+        return $this->loadedData;
     }
 }

@@ -3,7 +3,8 @@
       xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">dtn_office_employee_create.dtn_office_employee_create_data_source</item>
+            <item name="provider" xsi:type="string">dtn_office_employee_create.dtn_office_employee_create_data_source
+            </item>
             <item name="deps" xsi:type="string">dtn_office_employee_create.dtn_office_employee_create_data_source</item>
         </item>
         <item name="label" xsi:type="string" translate="true">Employee Information</item>
@@ -31,7 +32,8 @@
         <settings>
             <submitUrl path="dtn/employee/createPost"/>
         </settings>
-        <dataProvider class="Dtn\Office\Ui\Component\Employee\DataProvider" name="dtn_office_employee_create_data_source">
+        <dataProvider class="Dtn\Office\Model\Employee\DataProvider"
+                      name="dtn_office_employee_create_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>employee_id</primaryFieldName>
@@ -90,7 +92,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Dtn\Office\Model\Source\Options"/>
+                        <options class="Dtn\Office\Model\Source\Department\Options"/>
                     </settings>
                 </select>
             </formElements>

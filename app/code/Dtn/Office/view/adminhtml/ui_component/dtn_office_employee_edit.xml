@@ -31,7 +31,7 @@
         <settings>
             <submitUrl path="dtn/employee/editPost"/>
         </settings>
-        <dataProvider class="Dtn\Office\Ui\Component\Employee\DataProvider" name="dtn_office_employee_edit_data_source">
+        <dataProvider class="Dtn\Office\Model\Employee\DataProvider" name="dtn_office_employee_edit_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>employee_id</primaryFieldName>
@@ -90,7 +90,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Dtn\Office\Model\Source\Options"/>
+                        <options class="Dtn\Office\Model\Source\Department\Options"/>
                     </settings>
                 </select>
             </formElements>

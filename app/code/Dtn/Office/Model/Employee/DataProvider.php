@@ -1,35 +1,33 @@
 <?php
-namespace Dtn\Office\Ui\Component\Employee;
+
+namespace Dtn\Office\Model\Employee;
 
 use Dtn\Office\Model\ResourceModel\Employee\CollectionFactory;
+use Magento\Ui\DataProvider\AbstractDataProvider;
+use Magento\Framework\App\RequestInterface;
 
-class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class DataProvider extends AbstractDataProvider
 {
-    /**
-     * @param string $name
-     * @param string $primaryFieldName
-     * @param string $requestFieldName
-     * @param CollectionFactory $employeeCollectionFactory
-     * @param array $meta
-     * @param array $data
-     */
+
+    protected $employeeCollectionFactory;
+    protected $request;
+
     public function __construct(
         $name,
         $primaryFieldName,
         $requestFieldName,
         CollectionFactory $employeeCollectionFactory,
+        RequestInterface $request,
         array $meta = [],
         array $data = []
-    ) {
+    )
+    {
         $this->collection = $employeeCollectionFactory->create();
+        $this->employeeCollectionFactory = $employeeCollectionFactory;
+        $this->request = $request;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
-    /**
-     * Get data
-     *
-     * @return array
-     */
     public function getData()
     {
         return [];

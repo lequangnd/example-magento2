@@ -8,7 +8,6 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\View\Result\PageFactory;
 
-
 class Delete extends Action implements HttpGetActionInterface
 {
     public function __construct(

@@ -39,16 +39,17 @@ class DataProvider extends AbstractDataProvider
             return $this->loadedData;
         }
         $employeeId = $this->request->getParam('id');
-        $employee = $this->collection->getItemById($employeeId);
-        if ($employee && $employee->getEmployeeId()) {
-            $items = $this->collection->getItems();
-            foreach ($items as $employee) {
-                $this->loadedData[$employee->getEmployeeId()] = $employee->getData();
+        if ($employeeId) {
+            $employee = $this->collection->addFieldToFilter('employee_id', $employeeId)->getFirstItem();
+            if (!$employee->getEmployeeId()) {
+                $this->messageManager->addErrorMessage(__('Employee does not exit'));
+                return [];
             }
-        } else {
-            $this->messageManager->addErrorMessage(__('Employee does not exit'));
         }
-
+        $items = $this->collection->getItems();
+        foreach ($items as $employee) {
+            $this->loadedData[$employee->getEmployeeId()] = $employee->getData();
+        }
         return $this->loadedData;
     }
 }

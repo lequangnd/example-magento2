@@ -12,7 +12,7 @@
              title="Employees" translate="title" module="Dtn_Office"
              sortOrder="20" parent="Dtn_Office::dtn_menu"
              action="dtn/employee/index"
-             resource="Dtn_Office::dtn_menu_employee"
+                 resource="Dtn_Office::dtn_menu_employee"
         />
 
     </menu>

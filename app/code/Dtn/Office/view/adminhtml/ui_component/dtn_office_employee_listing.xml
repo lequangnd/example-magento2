@@ -44,6 +44,7 @@
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
         <filters name="listing_filters"/>
+        <filterSearch name="fulltext"/>
         <paging name="listing_paging"/>
         <massaction name="listing_massaction">
             <action name="delete">

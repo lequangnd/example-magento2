@@ -5,6 +5,8 @@ namespace Dtn\Office\Block\Employee;
 use Dtn\Office\Model\EmployeeFactory;
 use Dtn\Office\Model\ResourceModel\Department\CollectionFactory;
 use Magento\Framework\View\Element\Template;
+use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\Registry;
 
 class Update extends Template
 {
@@ -12,6 +14,8 @@ class Update extends Template
         Template\Context $context,
         protected CollectionFactory $departmentCollectionFactory,
         protected EmployeeFactory $employeeFactory,
+        protected ManagerInterface $messageManager,
+        protected Registry $registry,
         array $data = []
     )
     {
@@ -20,24 +24,12 @@ class Update extends Template
 
     public function getEmployee()
     {
-        $employeeId = $this->getRequest()->getParam('id');
-        $employee = $this->employeeFactory->create();
-        $employee->load($employeeId);
-        if ($employee->getId()) {
-            return $employee;
-        } else {
-            return null;
-        }
+        return $this->registry->registry('current_employee');
     }
 
     public function getDepartmentCollection()
     {
         return $this->departmentCollectionFactory->create();
-    }
-
-    public function getErrorMessage($errorMessage)
-    {
-        return $errorMessage;
     }
 
 }

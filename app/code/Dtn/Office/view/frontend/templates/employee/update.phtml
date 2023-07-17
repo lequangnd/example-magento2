@@ -1,6 +1,6 @@
 <?php
 $employee = $block->getEmployee();
-if ($employee->getId()):
+if ($employee):
     ?>
 
     <form action="/dtn/employee/updatePost" method="POST">
@@ -28,7 +28,5 @@ if ($employee->getId()):
         <input type="submit" value="Insert Employee">
     </form>
 <?php
-else:
-    echo $block->getErrorMessage('Employee does not exit');
 endif;
 ?>

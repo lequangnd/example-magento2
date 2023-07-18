@@ -18,4 +18,21 @@
         </arguments>
     </virtualType>
 
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dtn_office_department_listing_data_source" xsi:type="string">
+                    Dtn\Office\Model\ResourceModel\Department\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Dtn\Office\Model\ResourceModel\Department\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dtn_department</argument>
+            <argument name="resourceModel" xsi:type="string">Dtn\Office\Model\ResourceModel\Department</argument>
+        </arguments>
+    </virtualType>
+
 </config>

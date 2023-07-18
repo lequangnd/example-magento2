@@ -8,6 +8,13 @@
              resource="Dtn_Office::dtn_menu"
         />
 
+        <add id="Dtn_Office::dtn_menu_department"
+             title="Deparments" translate="title" module="Dtn_Office"
+             sortOrder="20" parent="Dtn_Office::dtn_menu"
+             action="dtn/department/index"
+             resource="Dtn_Office::dtn_menu_department"
+        />
+
         <add id="Dtn_Office::dtn_menu_employee"
              title="Employees" translate="title" module="Dtn_Office"
              sortOrder="20" parent="Dtn_Office::dtn_menu"

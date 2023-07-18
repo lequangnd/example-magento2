@@ -1,16 +1,20 @@
 <?php
 $collection = $block->getDepartmentCollection();
 ?>
-
+<a href="/dtn/department/create" class="btn btn-primary">Add Department</a>
+<hr>
 <table>
     <tr>
         <td>Id</td>
         <td>Name</td>
+        <td>Actions</td>
     </tr>
     <?php foreach ($collection as $department): ?>
         <tr>
             <td><?= $department->getId() ?></td>
             <td><?= $department->getName() ?></td>
+            <td><a href="/dtn/department/edit?id=<?= $department->getId() ?>">Edit</a></td>
+            <td><a href="/dtn/department/delete?id=<?= $department->getId() ?>">Delete</a></td>
         </tr>
     <?php endforeach; ?>
 </table>

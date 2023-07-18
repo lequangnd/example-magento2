@@ -45,7 +45,7 @@
     <fieldset name="department_details">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="collapsible" xsi:type="boolean">false</item>
                 <item name="label" xsi:type="string" translate="true">Department Details</item>
                 <item name="sortOrder" xsi:type="number">20</item>
             </item>

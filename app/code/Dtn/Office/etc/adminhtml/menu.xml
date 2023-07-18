@@ -9,7 +9,7 @@
         />
 
         <add id="Dtn_Office::dtn_menu_department"
-             title="Deparments" translate="title" module="Dtn_Office"
+             title="Departments" translate="title" module="Dtn_Office"
              sortOrder="20" parent="Dtn_Office::dtn_menu"
              action="dtn/department/index"
              resource="Dtn_Office::dtn_menu_department"

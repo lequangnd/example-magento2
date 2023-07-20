@@ -2,7 +2,7 @@
 
 namespace Dtn\Office\Controller\Employee;
 
-use Dtn\Office\Model\ResourceModel\Employee\Grid\CollectionFactory;
+use Dtn\Office\Model\ResourceModel\Employee\CollectionFactory;
 use Dtn\Office\Model\EmployeeFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;

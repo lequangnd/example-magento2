@@ -3,7 +3,7 @@
 namespace Dtn\Office\Model\Source\Department;
 
 use Magento\Framework\Data\OptionSourceInterface;
-use Dtn\Office\Model\ResourceModel\Department\Grid\CollectionFactory;
+use Dtn\Office\Model\ResourceModel\Department\CollectionFactory;
 
 class Options implements OptionSourceInterface
 {

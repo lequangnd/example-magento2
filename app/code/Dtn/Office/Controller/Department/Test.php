@@ -2,7 +2,7 @@
 
 namespace Dtn\Office\Controller\Department;
 
-use Dtn\Office\Model\ResourceModel\Department\Grid\CollectionFactory;
+use Dtn\Office\Model\ResourceModel\Department\CollectionFactory;
 use Dtn\Office\Model\DepartmentFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;

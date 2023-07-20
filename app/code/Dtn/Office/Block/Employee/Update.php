@@ -3,7 +3,7 @@
 namespace Dtn\Office\Block\Employee;
 
 use Dtn\Office\Model\EmployeeFactory;
-use Dtn\Office\Model\ResourceModel\Department\Grid\CollectionFactory;
+use Dtn\Office\Model\ResourceModel\Department\CollectionFactory;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Registry;

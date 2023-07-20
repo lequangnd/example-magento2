@@ -27,7 +27,7 @@
             </argument>
         </arguments>
     </type>
-    <virtualType name="Dtn\Office\Model\ResourceModel\Department\Grid\Collection"
+        <virtualType name="Dtn\Office\Model\ResourceModel\Department\Grid\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">dtn_department</argument>

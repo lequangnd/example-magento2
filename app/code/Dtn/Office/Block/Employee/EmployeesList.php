@@ -2,7 +2,7 @@
 
 namespace Dtn\Office\Block\Employee;
 
-use Dtn\Office\Model\ResourceModel\Employee\Grid\CollectionFactory;
+use Dtn\Office\Model\ResourceModel\Employee\CollectionFactory;
 use Dtn\Office\Model\DepartmentFactory;
 use Magento\Framework\View\Element\Template;
 use Magento\Theme\Block\Html\Pager;
@@ -19,6 +19,10 @@ class EmployeesList extends Template
         parent::__construct($context, $data);
     }
 
+    /**
+     *
+     * @return \Dtn\Office\Model\ResourceModel\Employee\Collection
+     */
     public function getEmployeesCollection()
     {
         $pageSize = 10; // Số lượng bản ghi trên mỗi trang

@@ -2,7 +2,7 @@
 
 namespace Dtn\Office\Block\Employee;
 
-use Dtn\Office\Model\ResourceModel\Department\CollectionFactory;
+use Dtn\Office\Model\ResourceModel\Department\Grid\CollectionFactory;
 use Magento\Framework\View\Element\Template;
 
 class Create extends Template

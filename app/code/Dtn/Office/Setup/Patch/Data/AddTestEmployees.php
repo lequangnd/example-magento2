@@ -3,7 +3,7 @@
 namespace Dtn\Office\Setup\Patch\Data;
 
 use Dtn\Office\Model\EmployeeFactory;
-use Dtn\Office\Model\ResourceModel\Department\CollectionFactory;
+use Dtn\Office\Model\ResourceModel\Department\Grid\CollectionFactory;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 
 class AddTestEmployees implements DataPatchInterface

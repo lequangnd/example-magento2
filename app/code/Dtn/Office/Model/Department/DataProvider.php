@@ -4,7 +4,7 @@ namespace Dtn\Office\Model\Department;
 
 use Magento\Framework\Data\OptionSourceInterface;
 use Magento\Ui\DataProvider\AbstractDataProvider;
-use Dtn\Office\Model\ResourceModel\Department\CollectionFactory;
+use Dtn\Office\Model\ResourceModel\Department\Grid\CollectionFactory;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Message\ManagerInterface;
 

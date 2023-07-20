@@ -1,6 +1,6 @@
 <?php
 
-namespace Dtn\Office\Model\ResourceModel\Employee;
+namespace Dtn\Office\Model\ResourceModel\Employee\Grid;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 

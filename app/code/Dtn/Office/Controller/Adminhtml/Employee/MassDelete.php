@@ -6,7 +6,7 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Ui\Component\MassAction\Filter;
-use Dtn\Office\Model\ResourceModel\Employee\CollectionFactory;
+use Dtn\Office\Model\ResourceModel\Employee\Grid\CollectionFactory;
 
 class MassDelete extends Action
 {

@@ -12,7 +12,6 @@ use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Phrase;
 use Magento\Framework\Validator\EmailAddress as EmailValidator;
-use Magento\Newsletter\Controller\Subscriber\NewAction as OriginalNewAction;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Newsletter\Model\Subscriber;
@@ -21,7 +20,7 @@ use Magento\Newsletter\Model\SubscriptionManagerInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
-class NewAction extends OriginalNewAction
+class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
 {
 
     protected $customerAccountManagement;

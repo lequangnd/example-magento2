@@ -22,7 +22,6 @@ use Magento\Store\Model\StoreManagerInterface;
 
 class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
 {
-
     protected $customerAccountManagement;
     private $emailValidator;
     private $subscriptionManager;
@@ -114,7 +113,6 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
             return null;
         }
     }
-
 
     private function getSuccessMessage(int $status): Phrase
     {

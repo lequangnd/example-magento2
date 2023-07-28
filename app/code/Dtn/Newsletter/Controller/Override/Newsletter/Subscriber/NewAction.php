@@ -19,6 +19,7 @@ use Magento\Newsletter\Model\SubscriberFactory;
 use Magento\Newsletter\Model\SubscriptionManagerInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\Validator\NotEmpty;
 
 class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
 {
@@ -26,6 +27,8 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
     private $emailValidator;
     private $subscriptionManager;
     private $customerRepository;
+    private $nameValidator;
+    private $construct;
 
     public function __construct
     (
@@ -37,10 +40,11 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
         CustomerAccountManagement $customerAccountManagement,
         SubscriptionManagerInterface $subscriptionManager,
         EmailValidator $emailValidator = null,
-        CustomerRepositoryInterface $customerRepository = null
+        CustomerRepositoryInterface $customerRepository = null,
+        NotEmpty $nameValidator
     )
     {
-        parent::__construct
+        $this->construct = parent::__construct
         (
             $context,
             $subscriberFactory,
@@ -52,16 +56,26 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
             $emailValidator,
             $customerRepository
         );
+        $this->construct;
         $this->customerAccountManagement = $customerAccountManagement;
         $this->subscriptionManager = $subscriptionManager;
         $this->emailValidator = $emailValidator ?: ObjectManager::getInstance()->get(EmailValidator::class);
         $this->customerRepository = $customerRepository ?: ObjectManager::getInstance()
             ->get(CustomerRepositoryInterface::class);
+        $this->nameValidator = $nameValidator;
+    }
+
+    public function validateNameNotEmpty($name)
+    {
+        if (!$this->nameValidator->isValid($name)) {
+            throw new LocalizedException(__('Please enter name'));
+        }
+
     }
 
     public function execute()
     {
-        if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email') && $this->getRequest()->getPost('name')) {
+        if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
             $email = (string)$this->getRequest()->getPost('email');
             $name = (string)$this->getRequest()->getPost('name');
 
@@ -69,6 +83,7 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
                 $this->validateEmailFormat($email);
                 $this->validateGuestSubscription();
                 $this->validateEmailAvailable($email);
+                $this->validateNameNotEmpty($name);
 
                 $websiteId = (int)$this->_storeManager->getStore()->getWebsiteId();
                 $subscriber = $this->_subscriberFactory->create()->loadBySubscriberEmail($email, $websiteId);
@@ -78,7 +93,6 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
                         __('This email address is already subscribed.')
                     );
                 }
-
                 $storeId = (int)$this->_storeManager->getStore()->getId();
                 $currentCustomerId = $this->getCustomerId($email, $websiteId);
 

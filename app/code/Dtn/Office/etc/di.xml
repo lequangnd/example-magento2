@@ -27,12 +27,27 @@
             </argument>
         </arguments>
     </type>
-        <virtualType name="Dtn\Office\Model\ResourceModel\Department\Grid\Collection"
+    <virtualType name="Dtn\Office\Model\ResourceModel\Department\Grid\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">dtn_department</argument>
             <argument name="resourceModel" xsi:type="string">Dtn\Office\Model\ResourceModel\Department</argument>
         </arguments>
     </virtualType>
+
+    <virtualType name="Dtn\Office\Logger\Handler" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/dtn.log</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Register Custom Logger Class -->
+    <type name="Psr\Log\LoggerInterface">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="dtn_logger" xsi:type="object">Dtn\Office\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
 
 </config>

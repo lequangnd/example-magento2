@@ -1,4 +1,5 @@
 <?php
+// hanhpv: just a test
 return [
     'modules' => [
         'Magento_Store' => 1,

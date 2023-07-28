@@ -1,4 +1,5 @@
 <?php
+
 namespace Dtn\Office\Controller\Override\Contact\Index;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;

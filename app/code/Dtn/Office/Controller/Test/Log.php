@@ -1,4 +1,5 @@
 <?php
+
 namespace Dtn\Office\Controller\Test;
 
 use Magento\Framework\App\Action\Context;
@@ -11,7 +12,8 @@ class Log extends \Magento\Framework\App\Action\Action
     public function __construct(
         Context $context,
         LoggerInterface $logger
-    ) {
+    )
+    {
         parent::__construct($context);
         $this->logger = $logger;
     }

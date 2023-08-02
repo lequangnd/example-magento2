@@ -44,7 +44,7 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
         NotEmpty $nameValidator
     )
     {
-        $this->construct = parent::__construct
+        parent::__construct
         (
             $context,
             $subscriberFactory,

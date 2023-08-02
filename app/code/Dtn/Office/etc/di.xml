@@ -35,18 +35,59 @@
         </arguments>
     </virtualType>
 
-    <virtualType name="Dtn\Office\Logger\Handler" type="Magento\Framework\Logger\Handler\Base">
+    <virtualType name="Magento\Payment\Model\Method\MyCustomDebug" type="Magento\Framework\Logger\Handler\Base">
         <arguments>
             <argument name="fileName" xsi:type="string">/var/log/dtn.log</argument>
         </arguments>
     </virtualType>
 
-    <!-- Register Custom Logger Class -->
-    <type name="Psr\Log\LoggerInterface">
+    <virtualType name="Magento\Payment\Model\Method\MyCustomLogger" type="Magento\Framework\Logger\Monolog">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="dtn_logger" xsi:type="object">Dtn\Office\Logger\Handler</item>
+                <item name="debug" xsi:type="object">Magento\Payment\Model\Method\MyCustomDebug</item>
             </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="log" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="error" xsi:type="object">Dtn\Office\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Dtn\Office\Observer\EmployeeLoadBefore">
+        <arguments>
+            <argument name="logger" xsi:type="object">log</argument>
+        </arguments>
+    </type>
+
+    <type name="Dtn\Office\Observer\EmployeeLoadAfter">
+        <arguments>
+            <argument name="logger" xsi:type="object">log</argument>
+        </arguments>
+    </type>
+
+    <type name="Dtn\Office\Observer\EmployeeSaveBefore">
+        <arguments>
+            <argument name="logger" xsi:type="object">log</argument>
+        </arguments>
+    </type>
+
+    <type name="Dtn\Office\Observer\EmployeeSaveAfter">
+        <arguments>
+            <argument name="logger" xsi:type="object">log</argument>
+        </arguments>
+    </type>
+    <type name="Dtn\Office\Observer\EmployeeDeleteBefore">
+        <arguments>
+            <argument name="logger" xsi:type="object">log</argument>
+        </arguments>
+    </type>
+    <type name="Dtn\Office\Observer\EmployeeDeleteAfter">
+        <arguments>
+            <argument name="logger" xsi:type="object">log</argument>
         </arguments>
     </type>
 

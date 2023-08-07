@@ -8,7 +8,7 @@ class Employee extends AbstractModel
 {
 
     protected $_eventPrefix = 'dtn_office_employee';
-        
+
     protected function _construct()
     {
         $this->_init(\Dtn\Office\Model\ResourceModel\Employee::class);

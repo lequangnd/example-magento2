@@ -35,13 +35,6 @@ class EmployeesList extends Template
         return $employeeCollection;
     }
 
-    public function getDepartmentName($departmentId)
-    {
-        $departmentName = $this->departmentFactory->create();
-        $departmentName->load($departmentId);
-        return $departmentName->getName();
-    }
-
     public function getPagerHtml()
     {
         $pager = $this->getLayout()->createBlock(

@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="dtn_office_employee_load_before">
         <observer name="dtn_office_employee_load_before_logger" instance="Dtn\Office\Observer\EmployeeLoadBefore"/>
     </event>
@@ -17,5 +18,8 @@
     </event>
     <event name="dtn_office_employee_delete_after">
         <observer name="dtn_office_employee_delete_after_logger" instance="Dtn\Office\Observer\EmployeeDeleteAfter"/>
+    </event>
+    <event name="dtn_office_employee_collection_load_after">
+        <observer name="dtn_office_employee_collection_load_after_observer" instance="Dtn\Office\Observer\LoadDepartmentName"/>
     </event>
 </config>

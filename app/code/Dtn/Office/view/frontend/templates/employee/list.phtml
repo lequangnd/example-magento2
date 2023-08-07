@@ -18,7 +18,7 @@ $collection = $block->getEmployeesCollection();
             <td><?= $employee->getFullName() ?></td>
             <td><?= $employee->getAddress() ?></td>
             <td><?= $employee->getTelephone() ?></td>
-            <td><?= $block->getDepartmentName($employee->getDepartmentId()) ?></td>
+            <td><?= $employee->getDepartmentName() ?></td>
             <td><a href="/dtn/employee/update?id=<?= $employee->getId() ?>">Update</a></td>
             <td><a href="/dtn/employee/delete?id=<?= $employee->getId() ?>">Delete</a></td>
         </tr>

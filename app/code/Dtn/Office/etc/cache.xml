@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="employees_list" translate="label,description" instance="Dtn\Office\Model\Cache\Type">
+        <label>employees_list</label>
+        <description>employees_list</description>
+    </type>
+</config>

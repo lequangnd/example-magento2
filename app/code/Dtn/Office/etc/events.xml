@@ -19,7 +19,4 @@
     <event name="dtn_office_employee_delete_after">
         <observer name="dtn_office_employee_delete_after_logger" instance="Dtn\Office\Observer\EmployeeDeleteAfter"/>
     </event>
-    <event name="dtn_office_employee_collection_load_after">
-        <observer name="dtn_office_employee_collection_load_after_observer" instance="Dtn\Office\Observer\LoadDepartmentName"/>
-    </event>
 </config>

@@ -21,7 +21,9 @@
         "fakerphp/faker": "^1.23",
         "magento/composer-dependency-version-audit-plugin": "~0.1",
         "magento/composer-root-update-plugin": "~2.0",
-        "magento/product-community-edition": "2.4.6-p1"
+        "magento/product-community-edition": "2.4.6-p1",
+        "mageplaza/magento-2-vietnamese-language-pack": "dev-master",
+        "mageplaza/module-smtp": "^4.7"
     },
     "autoload": {
         "exclude-from-classmap": [
@@ -30,7 +32,8 @@
             "**/Test/**"
         ],
         "files": [
-            "app/etc/NonComposerComponentRegistration.php"
+            "app/etc/NonComposerComponentRegistration.php",
+            "app/etc/stores.php"
         ],
         "psr-0": {
             "": [

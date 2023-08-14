@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="dtn" translate="label" sortOrder="10">
+            <label>DTN</label>
+        </tab>
+        <section id="office" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>DTN Configuration</label>
+            <tab>dtn</tab>
+            <resource>Dtn_Office::system_config</resource>
+            <group id="setting" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>General Setting</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="name" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Text</label>
+                    <comment>Enter name</comment>
+                </field>
+                <field id="phone" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Phone</label>
+                    <comment>Enter telephone</comment>
+                </field>
+                <field id="department" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Department</label>
+                    <source_model>Dtn\Office\Model\Config\Source\SelectOption</source_model>
+                    <comment>Select Department</comment>
+                </field>
+                <field id="country" translate="label" type="radios" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Country</label>
+                    <source_model>Dtn\Office\Model\Config\Source\RadioOption</source_model>
+                    <comment>Choose Country</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+

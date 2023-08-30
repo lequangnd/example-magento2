@@ -99,4 +99,10 @@
         </arguments>
     </type>
 
+    <!-- write a custom log file Indexer -->
+    <type name="Dtn\Office\Model\Indexer\EmployeeIndexer">
+        <arguments>
+            <argument name="logger" xsi:type="object">log</argument>
+        </arguments>
+    </type>
 </config>

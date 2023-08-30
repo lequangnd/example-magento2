@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+    <indexer id="dtn_employee_indexer" view_id="dtn_employee_indexer"
+             class="Dtn\Office\Model\Indexer\EmployeeIndexer">
+        <title translate="true">Dtn Employee Indexer</title>
+        <description translate="true">Dtn Employee Indexer</description>
+    </indexer>
+</config>

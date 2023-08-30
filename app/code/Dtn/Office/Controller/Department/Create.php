@@ -9,11 +9,15 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Create extends Action implements HttpGetActionInterface
 {
+    /**
+     * Create constructor.
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     */
     public function __construct(
         protected Context $context,
         protected PageFactory $resultPageFactory,
-    )
-    {
+    ) {
         parent::__construct($context);
     }
 
@@ -22,5 +26,4 @@ class Create extends Action implements HttpGetActionInterface
         $resultPage = $this->resultPageFactory->create();
         return $resultPage;
     }
-
 }

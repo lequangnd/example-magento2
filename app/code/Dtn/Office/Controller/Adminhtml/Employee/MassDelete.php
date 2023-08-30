@@ -2,23 +2,39 @@
 
 namespace Dtn\Office\Controller\Adminhtml\Employee;
 
+use Dtn\Office\Model\ResourceModel\Employee\CollectionFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Ui\Component\MassAction\Filter;
-use Dtn\Office\Model\ResourceModel\Employee\CollectionFactory;
 
 class MassDelete extends Action
 {
+    /**
+     * Employee collection factory instance
+     *
+     * @var CollectionFactory
+     */
     protected $employeeCollectionFactory;
+
+    /**
+     * Filter instance
+     *
+     * @var Filter
+     */
     protected $filter;
 
+    /**
+     * MassDelete constructor.
+     * @param Context $context
+     * @param Filter $filter
+     * @param CollectionFactory $collectionFactory
+     */
     public function __construct(
         Context $context,
         Filter $filter,
         CollectionFactory $collectionFactory,
-    )
-    {
+    ) {
         $this->filter = $filter;
         $this->employeeCollectionFactory = $collectionFactory;
         parent::__construct($context);
@@ -42,5 +58,4 @@ class MassDelete extends Action
         }
         return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/*/index');
     }
-
 }

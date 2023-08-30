@@ -9,17 +9,24 @@ use Magento\Theme\Block\Html\Pager;
 
 class EmployeesList extends Template
 {
+    /**
+     * EmployeesList constructor.
+     * @param Template\Context $context
+     * @param CollectionFactory $employeeCollectionFactory
+     * @param DepartmentFactory $departmentFactory
+     * @param array $data
+     */
     public function __construct(
         Template\Context $context,
         protected CollectionFactory $employeeCollectionFactory,
         protected DepartmentFactory $departmentFactory,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
     }
 
     /**
+     * Get department collection and configure the current record on a page
      *
      * @return \Dtn\Office\Model\ResourceModel\Employee\Collection
      */
@@ -35,6 +42,12 @@ class EmployeesList extends Template
         return $employeeCollection;
     }
 
+    /**
+     * Get pager HTML
+     *
+     * @return string
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function getPagerHtml()
     {
         $pager = $this->getLayout()->createBlock(
@@ -46,5 +59,4 @@ class EmployeesList extends Template
 
         return $pager->toHtml();
     }
-
 }

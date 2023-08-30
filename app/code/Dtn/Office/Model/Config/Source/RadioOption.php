@@ -6,7 +6,11 @@ use Magento\Framework\Option\ArrayInterface;
 
 class RadioOption implements ArrayInterface
 {
-
+    /**
+     * Create option array countries data
+     *
+     * @return \string[][]
+     */
     public function toOptionArray()
     {
         return [

@@ -7,13 +7,27 @@ use Dtn\Office\Model\ResourceModel\Department\CollectionFactory;
 
 class SelectOption implements ArrayInterface
 {
+    /**
+     * Department collection factory instance
+     *
+     * @var CollectionFactory
+     */
     protected $departmentCollectionFactory;
 
+    /**
+     * SelectOption constructor.
+     * @param CollectionFactory $departmentCollectionFactory
+     */
     public function __construct(CollectionFactory $departmentCollectionFactory)
     {
         $this->departmentCollectionFactory = $departmentCollectionFactory;
     }
 
+    /**
+     * Create select array departments data
+     *
+     * @return array
+     */
     public function toOptionArray()
     {
         $arr = [];

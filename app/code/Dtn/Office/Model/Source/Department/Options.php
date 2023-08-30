@@ -2,26 +2,40 @@
 
 namespace Dtn\Office\Model\Source\Department;
 
-use Magento\Framework\Data\OptionSourceInterface;
 use Dtn\Office\Model\ResourceModel\Department\CollectionFactory;
+use Magento\Framework\Data\OptionSourceInterface;
 
 class Options implements OptionSourceInterface
 {
-    protected $collectionFactory;
+    /**
+     * Department collection factory
+     *
+     * @var CollectionFactory
+     */
+    protected $departmentCollectionFactory;
 
+    /**
+     * Options constructor.
+     * @param CollectionFactory $collectionFactory
+     */
     public function __construct(CollectionFactory $collectionFactory)
     {
-        $this->collectionFactory = $collectionFactory;
+        $this->departmentCollectionFactory = $collectionFactory;
     }
 
+    /**
+     * Create option array department data
+     *
+     * @return array
+     */
     public function toOptionArray()
     {
         $options = [];
 
-        $collection = $this->collectionFactory->create();
-        $departments = $collection->addFieldToSelect(['department_id', 'name'])->getItems();
+        $department = $this->departmentCollectionFactory->create();
+        $departmentCollection = $department->addFieldToSelect(['department_id', 'name'])->getItems();
 
-        foreach ($departments as $department) {
+        foreach ($departmentCollection as $department) {
             $options[] = [
                 'value' => $department->getDepartmentId(),
                 'label' => $department->getName()
@@ -30,5 +44,4 @@ class Options implements OptionSourceInterface
 
         return $options;
     }
-
 }

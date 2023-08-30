@@ -8,8 +8,18 @@ use Psr\Log\LoggerInterface;
 
 class Log extends Action
 {
+    /**
+     * Logger
+     *
+     * @var LoggerInterface
+     */
     protected $logger;
 
+    /**
+     * Log constructor.
+     * @param Context $context
+     * @param LoggerInterface $logger
+     */
     public function __construct(Context $context, LoggerInterface $logger)
     {
         parent::__construct($context);

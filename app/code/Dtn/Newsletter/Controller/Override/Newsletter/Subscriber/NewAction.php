@@ -23,15 +23,55 @@ use Magento\Framework\Validator\NotEmpty;
 
 class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
 {
+    /**
+     * Customer account management
+     *
+     * @var CustomerAccountManagement
+     */
     protected $customerAccountManagement;
-    private $emailValidator;
-    private $subscriptionManager;
-    private $customerRepository;
-    private $nameValidator;
-    private $construct;
 
-    public function __construct
-    (
+    /**
+     * Name Validator
+     *
+     * @var NotEmpty
+     */
+    private $nameValidator;
+
+    /**
+     * Email validator
+     *
+     * @var EmailValidator|mixed
+     */
+    private $emailValidator;
+
+    /**
+     * Subscription manager
+     *
+     * @var SubscriptionManagerInterface
+     */
+    private $subscriptionManager;
+
+    /**
+     * Customer repository
+     *
+     * @var CustomerRepositoryInterface|mixed
+     */
+    private $customerRepository;
+
+    /**
+     * NewAction constructor.
+     * @param Context $context
+     * @param SubscriberFactory $subscriberFactory
+     * @param Session $customerSession
+     * @param StoreManagerInterface $storeManager
+     * @param CustomerUrl $customerUrl
+     * @param CustomerAccountManagement $customerAccountManagement
+     * @param SubscriptionManagerInterface $subscriptionManager
+     * @param NotEmpty $nameValidator
+     * @param EmailValidator|null $emailValidator
+     * @param CustomerRepositoryInterface|null $customerRepository
+     */
+    public function __construct(
         Context $context,
         SubscriberFactory $subscriberFactory,
         Session $customerSession,
@@ -39,11 +79,10 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
         CustomerUrl $customerUrl,
         CustomerAccountManagement $customerAccountManagement,
         SubscriptionManagerInterface $subscriptionManager,
+        NotEmpty $nameValidator,
         EmailValidator $emailValidator = null,
-        CustomerRepositoryInterface $customerRepository = null,
-        NotEmpty $nameValidator
-    )
-    {
+        CustomerRepositoryInterface $customerRepository = null
+    ) {
         parent::__construct
         (
             $context,
@@ -56,7 +95,6 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
             $emailValidator,
             $customerRepository
         );
-        $this->construct;
         $this->customerAccountManagement = $customerAccountManagement;
         $this->subscriptionManager = $subscriptionManager;
         $this->emailValidator = $emailValidator ?: ObjectManager::getInstance()->get(EmailValidator::class);
@@ -65,6 +103,12 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
         $this->nameValidator = $nameValidator;
     }
 
+    /**
+     * Check name not empty
+     *
+     * @param $name
+     * @throws LocalizedException
+     */
     public function validateNameNotEmpty($name)
     {
         if (!$this->nameValidator->isValid($name)) {
@@ -73,6 +117,11 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
 
     }
 
+    /**
+     * Add email and username to the database
+     *
+     * @return Redirect
+     */
     public function execute()
     {
         if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
@@ -118,6 +167,14 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
         return $redirect->setUrl($redirectUrl);
     }
 
+    /**
+     * Get customer Id
+     *
+     * @param string $email
+     * @param int $websiteId
+     * @return int|null
+     * @throws LocalizedException
+     */
     private function getCustomerId(string $email, int $websiteId): ?int
     {
         try {
@@ -128,6 +185,12 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
         }
     }
 
+    /**
+     * Get success message
+     *
+     * @param int $status
+     * @return Phrase
+     */
     private function getSuccessMessage(int $status): Phrase
     {
         if ($status === Subscriber::STATUS_NOT_ACTIVE) {
@@ -136,5 +199,4 @@ class NewAction extends \Magento\Newsletter\Controller\Subscriber\NewAction
 
         return __('Thank you for your subscription.');
     }
-
 }

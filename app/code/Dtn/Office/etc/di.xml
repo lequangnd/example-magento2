@@ -35,6 +35,7 @@
         </arguments>
     </virtualType>
 
+    <!-- Write to a custom log file -->
     <virtualType name="Magento\Payment\Model\Method\MyCustomDebug" type="Magento\Framework\Logger\Handler\Base">
         <arguments>
             <argument name="fileName" xsi:type="string">/var/log/dtn.log</argument>
@@ -57,6 +58,13 @@
         </arguments>
     </virtualType>
 
+    <type name="Dtn\Office\Controller\Test\Log">
+        <arguments>
+            <argument name="logger" xsi:type="object">log</argument>
+        </arguments>
+    </type>
+
+    <!-- Write to a custom log file event observer -->
     <type name="Dtn\Office\Observer\EmployeeLoadBefore">
         <arguments>
             <argument name="logger" xsi:type="object">log</argument>

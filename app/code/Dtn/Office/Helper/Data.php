@@ -22,5 +22,4 @@ class Data extends AbstractHelper
 
         return $this->getConfigValue(self::XML_PATH_OFFICE .'setting/'. $code, $storeId);
     }
-
 }

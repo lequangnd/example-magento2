@@ -10,29 +10,40 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Delete extends Action implements HttpGetActionInterface
 {
+    /**
+     * Delete constructor.
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     * @param EmployeeFactory $employeeFactory
+     */
     public function __construct(
         protected Context $context,
         protected PageFactory $resultPageFactory,
         protected EmployeeFactory $employeeFactory,
-    )
-    {
+    ) {
         parent::__construct($context);
     }
 
     public function execute()
     {
         $employeeId = $this->getRequest()->getParam('id');
-        if (isset($employeeId)) {
-            $employee = $this->employeeFactory->create();
-            $employee->load($employeeId);
-            $employee->delete();
-
-            $this->messageManager->addSuccessMessage(__('Delete Employee Successful'));
-            $redirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
-            $redirect->setUrl('/dtn/employee/');
-
-            return $redirect;
-        }
+        $this->deleteEmployee($employeeId);
+        $this->messageManager->addSuccessMessage(__('Delete Employee Successful'));
+        return $this->resultRedirectFactory->create()->setUrl('/dtn/employee/index');
     }
 
+    /**
+     * Delete employee data
+     *
+     * @param $employeeId
+     * @return bool
+     * @throws \Exception
+     */
+    public function deleteEmployee($employeeId)
+    {
+        $employee = $this->employeeFactory->create();
+        $employee->load($employeeId);
+        $employee->delete();
+        return true;
+    }
 }

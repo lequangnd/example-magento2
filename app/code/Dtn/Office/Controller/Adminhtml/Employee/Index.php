@@ -9,11 +9,15 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Index extends Action implements HttpGetActionInterface
 {
+    /**
+     * Index constructor.
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     */
     public function __construct(
         protected Context $context,
         protected PageFactory $resultPageFactory
-    )
-    {
+    ) {
         parent::__construct($context);
     }
 
@@ -23,5 +27,4 @@ class Index extends Action implements HttpGetActionInterface
         $resultPage->getConfig()->getTitle()->prepend(__('Employees'));
         return $resultPage;
     }
-
 }

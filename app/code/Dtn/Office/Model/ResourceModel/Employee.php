@@ -15,5 +15,4 @@ class Employee extends AbstractDb
     {
         $this->_init('dtn_employee', 'employee_id');
     }
-
 }

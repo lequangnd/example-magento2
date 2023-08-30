@@ -10,12 +10,17 @@ use Magento\Framework\View\Result\PageFactory;
 
 class UpdatePost extends Action implements HttpPostActionInterface
 {
+    /**
+     * UpdatePost constructor.
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     * @param EmployeeFactory $employeeFactory
+     */
     public function __construct(
         protected Context $context,
         protected PageFactory $resultPageFactory,
         protected EmployeeFactory $employeeFactory,
-    )
-    {
+    ) {
         parent::__construct($context);
     }
 
@@ -23,31 +28,46 @@ class UpdatePost extends Action implements HttpPostActionInterface
     {
         if ($this->getRequest()->isPost()) {
             $postData = $this->getRequest()->getPostValue();
-
-            // Lấy dữ liệu từ form
             $employeeId = $postData['id'];
-            $full_name = $postData['full_name'];
-            $address = $postData['address'];
-            $telephone = $postData['telephone'];
-            $department_id = $postData['department_id'];
-            $dob = $postData['dob'];
 
-            // Thực hiện insert dữ liệu vào cơ sở dữ liệu
-            $employee = $this->employeeFactory->create();
-            $employee->load($employeeId);
-            $employee->setFullName($full_name);
-            $employee->setAddress($address);
-            $employee->setTelephone($telephone);
-            $employee->setDepartmentId($department_id);
-            $employee->setDob($dob);
-            $employee->save();
-
-            $this->messageManager->addSuccessMessage(__('Update Employee Successful'));
-            $redirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
-            $redirect->setUrl('/dtn/employee/');
-            return $redirect;
-
+            if ($this->updateEmployee($employeeId, $postData)) {
+                $this->messageManager->addSuccessMessage(__('Edit Employee Successful'));
+                return $this->resultRedirectFactory->create()->setUrl('/dtn/employee/index');
+            }
+            $this->messageManager->addSuccessMessage(__('Edit Employee Error'));
+            return $this->resultRedirectFactory->create()->setUrl('/dtn/employee/update?id=' . $employeeId);
         }
     }
 
+    /**
+     * Save the edited employee data to the database
+     *
+     * @param $employeeId
+     * @param $data
+     * @return bool
+     * @throws \Exception
+     */
+    public function updateEmployee($employeeId, $data)
+    {
+        $employee = $this->employeeFactory->create();
+        $employee->load($employeeId);
+        $this->setEmployeeData($employee, $data);
+        $employee->save();
+        return true;
+    }
+
+    /**
+     * Set employee data
+     *
+     * @param $employee
+     * @param $data
+     */
+    public function setEmployeeData($employee, $data)
+    {
+        $employee->setFullName($data['full_name']);
+        $employee->setAddress($data['address']);
+        $employee->setTelephone($data['telephone']);
+        $employee->setDepartmentId($data['department_id']);
+        $employee->setDob($data['dob']);
+    }
 }

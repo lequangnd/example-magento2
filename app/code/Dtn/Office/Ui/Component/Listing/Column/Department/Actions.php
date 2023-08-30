@@ -6,7 +6,12 @@ use Magento\Ui\Component\Listing\Columns\Column;
 
 class Actions extends Column
 {
-
+    /**
+     * Create edit and delete actions
+     *
+     * @param array $dataSource
+     * @return array
+     */
     public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {

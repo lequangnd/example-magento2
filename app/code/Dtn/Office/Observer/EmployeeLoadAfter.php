@@ -8,13 +8,27 @@ use Psr\Log\LoggerInterface;
 
 class EmployeeLoadAfter implements ObserverInterface
 {
+    /**
+     * Logger
+     *
+     * @var LoggerInterface
+     */
     protected $_logger;
 
+    /**
+     * EmployeeLoadAfter constructor.
+     * @param LoggerInterface $logger
+     */
     public function __construct(LoggerInterface $logger)
     {
         $this->_logger = $logger;
     }
 
+    /**
+     * Write to a custom to log file
+     *
+     * @param Observer $observer
+     */
     public function execute(Observer $observer)
     {
         $employee = $observer->getObject();

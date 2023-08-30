@@ -7,19 +7,35 @@ use Dtn\Office\Model\Config\Source\RadioOption;
 
 class Config extends \Magento\Framework\App\Action\Action
 {
-
+    /**
+     * @var \Dtn\Office\Helper\Data
+     */
     protected $helperData;
+
+    /**
+     * @var SelectOption
+     */
     protected $selectOption;
+
+    /**
+     * @var RadioOption
+     */
     protected $radioOption;
 
+    /**
+     * Config constructor.
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param \Dtn\Office\Helper\Data $helperData
+     * @param SelectOption $selectOption
+     * @param RadioOption $radioOption
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Dtn\Office\Helper\Data $helperData,
         SelectOption $selectOption,
         RadioOption $radioOption
 
-    )
-    {
+    ) {
         $this->helperData = $helperData;
         $this->selectOption = $selectOption;
         $this->radioOption = $radioOption;

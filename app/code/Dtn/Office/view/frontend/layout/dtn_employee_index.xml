@@ -6,7 +6,7 @@
             <block class="Dtn\Office\Block\Employee\EmployeesList" name="employees.list"
                    template="Dtn_Office::employee/list.phtml">
                 <arguments>
-                    <argument name="cache_lifetime" xsi:type="number">3600</argument>
+                    <argument name="cache_lifetime" xsi:type="boolean">false</argument>
                 </arguments>
             </block>
         </referenceContainer>

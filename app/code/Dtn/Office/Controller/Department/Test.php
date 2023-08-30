@@ -11,12 +11,16 @@ use Magento\Framework\App\Action\HttpPostActionInterface;
 
 class Test extends Action implements HttpGetActionInterface, HttpPostActionInterface
 {
+    /**
+     * Test constructor.
+     * @param Context $context
+     * @param CollectionFactory $departmentCollectionFactory
+     */
     public function __construct(
         protected Context $context,
         //protected DepartmentFactory $departmentFactory,
         protected CollectionFactory $departmentCollectionFactory
-    )
-    {
+    ) {
         parent::__construct($context);
     }
 

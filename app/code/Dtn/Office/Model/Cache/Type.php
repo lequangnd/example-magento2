@@ -12,7 +12,7 @@ class Type extends \Magento\Framework\Cache\Frontend\Decorator\TagScope
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
-    const CACHE_TAG = 'employees_list';
+    const CACHE_TAG = 'EMPLOYEE_LIST';
 
     /**
      * @param \Magento\Framework\App\Cache\Type\FrontendPool $cacheFrontendPool
@@ -21,5 +21,4 @@ class Type extends \Magento\Framework\Cache\Frontend\Decorator\TagScope
     {
         parent::__construct($cacheFrontendPool->get(self::TYPE_IDENTIFIER), self::CACHE_TAG);
     }
-
 }

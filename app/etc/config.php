@@ -327,6 +327,7 @@ return [
         'Magento_Wishlist' => 1,
         'Magento_WishlistAnalytics' => 1,
         'Magento_WishlistGraphQl' => 1,
+        'Dtn_Catalog' => 1,
         'Dtn_Newsletter' => 1,
         'Dtn_Office' => 1,
         'Mageplaza_Core' => 1,

@@ -112,4 +112,9 @@
             <argument name="logger" xsi:type="object">log</argument>
         </arguments>
     </type>
+
+    <!-- Registry Repository -->
+    <preference for="Dtn\Office\Api\DepartmentRepositoryInterface" type="Dtn\Office\Model\DepartmentRepository"/>
+    <preference for="Dtn\Office\Api\Data\DepartmentInterface" type="Dtn\Office\Model\Department"/>
+    <preference for="Dtn\Office\Api\Data\DepartmentSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
 </config>

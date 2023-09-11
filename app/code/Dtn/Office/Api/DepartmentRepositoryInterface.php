@@ -8,6 +8,12 @@ use Dtn\Office\Api\Data\DepartmentInterface;
 interface DepartmentRepositoryInterface
 {
     /**
+     * @param array $data
+     * @return mixed
+     */
+    public function create(array $data);
+
+    /**
      * @param $id
      * @return mixed
      */

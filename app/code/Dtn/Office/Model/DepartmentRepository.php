@@ -31,8 +31,7 @@ class DepartmentRepository implements DepartmentRepositoryInterface
      * @var CollectionProcessorInterface
      */
     private $collectionProcessor;
-
-
+    
     /**
      * DepartmentRepository constructor.
      * @param DepartmentFactory $departmentFactory
@@ -54,6 +53,19 @@ class DepartmentRepository implements DepartmentRepositoryInterface
     }
 
     /**
+     * @param array $data
+     * @return Department|mixed
+     * @throws \Magento\Framework\Exception\AlreadyExistsException
+     */
+    public function create(array $data)
+    {
+        $department = $this->departmentFactory->create();
+        $department->setData($data);
+        $department->save();
+        return $department;
+    }
+
+    /**
      * Get department by id
      *
      * @param $id
@@ -71,8 +83,6 @@ class DepartmentRepository implements DepartmentRepositoryInterface
     }
 
     /**
-     * Save department
-     *
      * @param DepartmentInterface $department
      * @return DepartmentInterface
      * @throws \Magento\Framework\Exception\AlreadyExistsException

@@ -2,7 +2,7 @@
 
 namespace Dtn\Office\Controller\Department;
 
-use Dtn\Office\Model\DepartmentFactory;
+use Dtn\Office\Api\DepartmentRepositoryInterface;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
@@ -14,12 +14,12 @@ class Delete extends Action implements HttpGetActionInterface
      * Delete constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory
-     * @param DepartmentFactory $departmentFactory
+     * @param DepartmentRepositoryInterface $departmentRepository
      */
     public function __construct(
         protected Context $context,
         protected PageFactory $resultPageFactory,
-        protected DepartmentFactory $departmentFactory,
+        protected DepartmentRepositoryInterface $departmentRepository,
     ) {
         parent::__construct($context);
     }
@@ -33,16 +33,12 @@ class Delete extends Action implements HttpGetActionInterface
     }
 
     /**
-     * Delete department data
-     *
      * @param $departmentId
      * @return bool
-     * @throws \Exception
      */
     public function deleteDepartment($departmentId)
     {
-        $department = $this->departmentFactory->create();
-        $department->load($departmentId);
+        $department = $this->departmentRepository->getById($departmentId);
         $department->delete();
         return true;
     }

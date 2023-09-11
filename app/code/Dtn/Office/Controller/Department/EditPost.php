@@ -2,7 +2,7 @@
 
 namespace Dtn\Office\Controller\Department;
 
-use Dtn\Office\Model\DepartmentFactory;
+use Dtn\Office\Api\DepartmentRepositoryInterface;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
@@ -14,12 +14,12 @@ class EditPost extends Action implements HttpPostActionInterface
      * EditPost constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory
-     * @param DepartmentFactory $departmentFactory
+     * @param DepartmentRepositoryInterface $departmentRepository
      */
     public function __construct(
         protected Context $context,
         protected PageFactory $resultPageFactory,
-        protected DepartmentFactory $departmentFactory,
+        protected DepartmentRepositoryInterface $departmentRepository,
     ) {
         parent::__construct($context);
     }
@@ -34,29 +34,30 @@ class EditPost extends Action implements HttpPostActionInterface
                 $this->messageManager->addSuccessMessage(__('Edit Department successful'));
                 return $this->resultRedirectFactory->create()->setUrl('/dtn/department/index');
             }
-            $this->messageManager->addErrorMessage(__('Edit Department Error'));
+
+            $this->messageManager->addSuccessMessage(__('Edit Department Error'));
             return $this->resultRedirectFactory->create()->setUrl('/dtn/department/edit?id=' . $departmentId);
         }
     }
 
     /**
-     * Save the edited department data to the database
-     *
      * @param $departmentId
      * @param $data
      * @return bool
-     * @throws \Exception\
      */
     public function editDepartment($departmentId, $data)
     {
-        $department = $this->departmentFactory->create();
-        $department->load($departmentId);
-        $this->setDepartmentData($department, $data);
+        $department = $this->departmentRepository->getById($departmentId);
+        $this->setDepartment($department, $data);
         $department->save();
         return true;
     }
 
-    public function setDepartmentData($department, $data)
+    /**
+     * @param $department
+     * @param $data
+     */
+    public function setDepartment($department, $data)
     {
         $department->setName($data['name']);
     }

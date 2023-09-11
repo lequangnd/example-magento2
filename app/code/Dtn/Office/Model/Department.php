@@ -28,6 +28,6 @@ class Department extends AbstractModel implements DepartmentInterface
      */
     public function setName($name)
     {
-        $this->setData(self::NAME);
+        $this->setData(self::NAME,$name);
     }
 }

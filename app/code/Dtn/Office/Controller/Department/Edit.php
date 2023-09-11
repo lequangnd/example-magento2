@@ -2,7 +2,7 @@
 
 namespace Dtn\Office\Controller\Department;
 
-use Dtn\Office\Model\DepartmentFactory;
+use Dtn\Office\Api\DepartmentRepositoryInterface;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
@@ -16,14 +16,15 @@ class Edit extends Action implements HttpGetActionInterface
      * @param Context $context
      * @param PageFactory $resultPageFactory
      * @param Registry $registry
-     * @param DepartmentFactory $departmentFactory
+     * @param DepartmentRepositoryInterface $departmentRepository
      */
     public function __construct(
         protected Context $context,
         protected PageFactory $resultPageFactory,
         protected Registry $registry,
-        protected DepartmentFactory $departmentFactory,
-    ) {
+        protected DepartmentRepositoryInterface $departmentRepository,
+    )
+    {
         parent::__construct($context);
     }
 
@@ -35,8 +36,6 @@ class Edit extends Action implements HttpGetActionInterface
     }
 
     /**
-     * Get department data into registry
-     *
      * @return \Magento\Framework\Message\ManagerInterface|void
      */
     public function _initDepartment()
@@ -51,15 +50,12 @@ class Edit extends Action implements HttpGetActionInterface
     }
 
     /**
-     * Get department data by Id
-     *
      * @param $departmentId
-     * @return \Dtn\Office\Model\Department|null
+     * @return mixed|null
      */
     public function getDepartmentById($departmentId)
     {
-        $department = $this->departmentFactory->create();
-        $department->load($departmentId);
+        $department = $this->departmentRepository->getById($departmentId);
         if ($department->getId()) {
             return $department;
         }

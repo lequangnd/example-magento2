@@ -330,6 +330,7 @@ return [
         'Dtn_Catalog' => 1,
         'Dtn_Newsletter' => 1,
         'Dtn_Office' => 1,
+        'Dtn_ProductIngredient' => 1,
         'Mageplaza_Core' => 1,
         'Mageplaza_Smtp' => 1,
         'PayPal_Braintree' => 1,

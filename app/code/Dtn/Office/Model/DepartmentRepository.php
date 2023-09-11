@@ -31,7 +31,7 @@ class DepartmentRepository implements DepartmentRepositoryInterface
      * @var CollectionProcessorInterface
      */
     private $collectionProcessor;
-    
+
     /**
      * DepartmentRepository constructor.
      * @param DepartmentFactory $departmentFactory

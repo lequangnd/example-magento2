@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="catalog_product_ingredient" resource="default" engine="innodb" comment="DTN Department">
+        <column xsi:type="smallint" name="ingredient_id" unsigned="false" nullable="false" identity="true"
+                comment="Ingredient ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Ingredient Name"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Image Ingredient"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="ingredient_id"/>
+        </constraint>
+    </table>
+</schema>

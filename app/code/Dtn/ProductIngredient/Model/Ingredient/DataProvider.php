@@ -7,6 +7,8 @@ use Magento\Ui\DataProvider\AbstractDataProvider;
 
 class DataProvider extends AbstractDataProvider
 {
+    protected $loadedData;
+
     public function __construct(
         $name,
         $primaryFieldName,

@@ -10,21 +10,13 @@ use Magento\Eav\Setup\EavSetupFactory;
 
 class AddProductIngredientAttribute implements DataPatchInterface
 {
-    /**
-     * @var ModuleDataSetupInterface
-     */
+
     private $moduleDataSetup;
 
-    /**
-     * @var EavSetupFactory
-     */
+
     private $eavSetupFactory;
 
-    /**
-     * AddAttributeGroup constructor.
-     * @param ModuleDataSetupInterface $moduleDataSetup
-     * @param EavSetupFactory $eavSetupFactory
-     */
+
     public function __construct(
         ModuleDataSetupInterface $moduleDataSetup,
         EavSetupFactory $eavSetupFactory
@@ -33,11 +25,7 @@ class AddProductIngredientAttribute implements DataPatchInterface
         $this->eavSetupFactory = $eavSetupFactory;
     }
 
-    /**
-     * @return AddAttributeGroup|void
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Validator\ValidateException
-     */
+
     public function apply()
     {
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
@@ -46,12 +34,13 @@ class AddProductIngredientAttribute implements DataPatchInterface
             Product::ENTITY,
             'ingredients',
             [
-                'type' => 'multiselect',
+                'type' => 'text',
                 'label' => 'Ingredients',
                 'input' => 'multiselect',
-                'source' => \YourVendor\YourModule\Model\Attribute\Source\Ingredients::class, // Custom source model
+                'source' => \Dtn\ProductIngredient\Model\Ingredient\Attribute\Source\IngredientMultiOption::class,
                 'required' => false,
                 'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
+                'backend' => 'Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend',
                 'group' => 'Ingredients',
             ]
         );

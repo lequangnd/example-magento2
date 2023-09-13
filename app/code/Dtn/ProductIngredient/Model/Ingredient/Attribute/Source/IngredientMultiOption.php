@@ -1,14 +1,14 @@
 <?php
 
-namespace Dtn\Catalog\Model\Department\Attribute\Source;
+namespace Dtn\ProductIngredient\Model\Ingredient\Attribute\Source;
 
-use Dtn\Office\Model\DepartmentFactory;
+use Dtn\ProductIngredient\Model\IngredientFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\App\Cache\Type\Config;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 use Magento\Framework\Data\OptionSourceInterface;
 
-class DepartmentOption extends AbstractSource implements OptionSourceInterface
+class IngredientMultiOption extends AbstractSource implements OptionSourceInterface
 {
     /**
      * @var Config
@@ -21,38 +21,46 @@ class DepartmentOption extends AbstractSource implements OptionSourceInterface
     protected $storeManager;
 
     /**
-     * @var DepartmentFactory
+     * @var IngredientFactory
      */
-    protected $departmentFactory;
+    protected $ingredientFactory;
 
-    /**
-     * @var \Magento\Framework\Serialize\SerializerInterface
-     */
     private $serializer;
 
+    /**
+     * IngredientMultiOption constructor.
+     * @param IngredientFactory $ingredientFactory
+     * @param StoreManagerInterface $storeManager
+     * @param Config $configCacheType
+     */
     public function __construct(
-        DepartmentFactory $countryFactory,
+        IngredientFactory $ingredientFactory,
         StoreManagerInterface $storeManager,
         Config $configCacheType
     ) {
-        $this->departmentFactory = $countryFactory;
+        $this->ingredientFactory = $ingredientFactory;
         $this->storeManager = $storeManager;
         $this->_configCacheType = $configCacheType;
     }
 
+    /**
+     * @return array|bool|float|int|string
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getAllOptions()
     {
-        $cacheKey = 'DTNDEPARTMENT_SELECT_STORE_' . $this->storeManager->getStore()->getCode();
+        $cacheKey = 'PRODUCTINGREDIENT_SELECT_STORE_' . $this->storeManager->getStore()->getCode();
         if ($cache = $this->_configCacheType->load($cacheKey)) {
             $options = $this->getSerializer()->unserialize($cache);
         } else {
-            $department = $this->departmentFactory->create();
-            $collection = $department->getResourceCollection();
+            $ingredient = $this->ingredientFactory->create();
+            $collection = $ingredient->getResourceCollection();
 
             $options = [];
             foreach ($collection as $item) {
                 $options[] = [
-                    'value' => $item->getData('department_id'),
+                    'value' => $item->getData('ingredient_id'),
                     'label' => $item->getData('name'),
                 ];
             }

@@ -1,13 +1,13 @@
 <?php
 
-namespace Dtn\ProductIngredient\Block\Ingredient;
+namespace Dtn\ProductIngredient\Block\Product\View;
 
 use Dtn\ProductIngredient\Model\ResourceModel\Ingredient\CollectionFactory;
 use Magento\Catalog\Block\Product\Context;
 use Magento\Framework\View\Element\Template;
-use Magento\Catalog\Model\ProductFactory;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 
-class Index extends Template
+class Ingredient extends Template
 {
     /**
      * @var CollectionFactory
@@ -15,52 +15,52 @@ class Index extends Template
     protected $ingredientCollectionFactory;
 
     /**
-     * @var ProductFactory
+     * @var ProductRepositoryInterface
      */
-    protected $productFactory;
+    protected $productRepository;
 
     /**
      * Index constructor.
      * @param Context $context
      * @param CollectionFactory $ingredientCollectionFactory
-     * @param ProductFactory $productFactory
+     * @param ProductRepositoryInterface $productRepositoryInterface
      * @param array $data
      */
     public function __construct(
         Context $context,
         CollectionFactory $ingredientCollectionFactory,
-        ProductFactory $productFactory,
+        ProductRepositoryInterface $productRepositoryInterface,
         array $data = []
-    )
-    {
+    ) {
         $this->ingredientCollectionFactory = $ingredientCollectionFactory;
-        $this->productFactory = $productFactory;
+        $this->productRepository = $productRepositoryInterface;
         parent::__construct($context, $data);
     }
 
     /**
      * @return array
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getIngredientCollection()
     {
         $productId = $this->getRequest()->getParam('id');
-        $product = $this->productFactory->create()->load($productId);
+        $product = $this->productRepository->getById($productId);
 
         $ingredients = $product->getData('ingredients');
         $ingredientIds = explode(',', $ingredients);
 
-        $ingredients = [];
+        $ingredientsData = [];
         $ingredientCollection = $this->ingredientCollectionFactory->create();
+        $ingredientCollection->addFieldToFilter('ingredient_id', ['in' => $ingredientIds]);
 
-        foreach ($ingredientIds as $ingredientId) {
-            $ingredient = $ingredientCollection->getItemById($ingredientId);
-            $ingredients[] = [
+        foreach ($ingredientCollection as $ingredient) {
+            $ingredientsData[] = [
                 'ingredient_id' => $ingredient->getIngredientId(),
                 'name' => $ingredient->getName(),
                 'image' => $ingredient->getImage()
             ];
         }
 
-        return $ingredients;
+        return $ingredientsData;
     }
 }

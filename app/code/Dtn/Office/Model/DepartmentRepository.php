@@ -55,7 +55,7 @@ class DepartmentRepository implements DepartmentRepositoryInterface
     /**
      * @param array $data
      * @return Department|mixed
-     * @throws \Magento\Framework\Exception\AlreadyExistsException
+     * @throws \Exception
      */
     public function create(array $data)
     {

@@ -3,8 +3,8 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="product.info.main">
-            <block class="Dtn\ProductIngredient\Block\Ingredient\Index" name="ingredient.index"
-                   template="Dtn_ProductIngredient::ingredient/index.phtml" after="product.info.price"/>
+            <block class="Dtn\ProductIngredient\Block\Product\View\Ingredient" name="ingredient.index"
+                   template="Dtn_ProductIngredient::product/view/ingredient.phtml" after="product.info.price"/>
         </referenceContainer>
     </body>
 </page>

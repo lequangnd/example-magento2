@@ -44,8 +44,7 @@ class IngredientMultiOption extends AbstractSource implements OptionSourceInterf
     }
 
     /**
-     * @return array|bool|float|int|string
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @return array
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getAllOptions()

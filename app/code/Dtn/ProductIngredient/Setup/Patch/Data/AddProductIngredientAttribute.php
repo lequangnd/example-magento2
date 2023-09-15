@@ -10,13 +10,21 @@ use Magento\Eav\Setup\EavSetupFactory;
 
 class AddProductIngredientAttribute implements DataPatchInterface
 {
-
+    /**
+     * @var ModuleDataSetupInterface
+     */
     private $moduleDataSetup;
 
-
+    /**
+     * @var EavSetupFactory
+     */
     private $eavSetupFactory;
 
-
+    /**
+     * AddProductIngredientAttribute constructor.
+     * @param ModuleDataSetupInterface $moduleDataSetup
+     * @param EavSetupFactory $eavSetupFactory
+     */
     public function __construct(
         ModuleDataSetupInterface $moduleDataSetup,
         EavSetupFactory $eavSetupFactory
@@ -25,7 +33,9 @@ class AddProductIngredientAttribute implements DataPatchInterface
         $this->eavSetupFactory = $eavSetupFactory;
     }
 
-
+    /**
+     * @return AddProductIngredientAttribute|void
+     */
     public function apply()
     {
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
